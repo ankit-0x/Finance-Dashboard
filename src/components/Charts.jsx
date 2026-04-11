@@ -45,57 +45,69 @@ const Charts = ({ data, dark }) => {
   const base = dark ? "bg-gray-800 text-white" : "bg-white text-black";
 
   return (
-    <div className="grid md:grid-cols-2 gap-6 mt-6">
-      <div className={`${base} p-5 rounded-2xl shadow`}>
-        <h2 className="mb-3 font-semibold text-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-6">
+      {/* PIE CHART */}
+      <div className={`${base} p-4 sm:p-5 rounded-2xl shadow`}>
+        <h2 className="mb-3 font-semibold text-center text-sm sm:text-base">
           💸 Expense Distribution
         </h2>
 
         {pieData.length === 0 ? (
-          <p className="text-gray-500 text-center">No expense data</p>
+          <p className="text-gray-500 text-center text-sm">No expense data</p>
         ) : (
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={pieData}
-                dataKey="value"
-                nameKey="name"
-                outerRadius={100}
-                label
-              >
-                {pieData.map((_, index) => (
-                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
+          <div className="w-full h-[250px] sm:h-[300px]">
+            <ResponsiveContainer>
+              <PieChart>
+                <Pie
+                  data={pieData}
+                  dataKey="value"
+                  nameKey="name"
+                  outerRadius={window.innerWidth < 640 ? 80 : 100}
+                  label={window.innerWidth >= 640}
+                >
+                  {pieData.map((_, index) => (
+                    <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
 
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
+                <Tooltip />
+                <Legend
+                  wrapperStyle={{ fontSize: "12px" }}
+                  layout="horizontal"
+                  verticalAlign="bottom"
+                />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
         )}
       </div>
 
-      <div className={`${base} p-5 rounded-2xl shadow`}>
-        <h2 className="mb-3 font-semibold text-center">📈 Balance Over Time</h2>
+      {/* LINE CHART */}
+      <div className={`${base} p-4 sm:p-5 rounded-2xl shadow`}>
+        <h2 className="mb-3 font-semibold text-center text-sm sm:text-base">
+          📈 Balance Over Time
+        </h2>
 
         {trendData.length === 0 ? (
-          <p className="text-gray-500 text-center">No data available</p>
+          <p className="text-gray-500 text-center text-sm">No data available</p>
         ) : (
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={trendData}>
-              <XAxis dataKey="date" />
-              <YAxis />
-              <Tooltip />
+          <div className="w-full h-[250px] sm:h-[300px]">
+            <ResponsiveContainer>
+              <LineChart data={trendData}>
+                <XAxis dataKey="date" tick={{ fontSize: 10 }} />
+                <YAxis tick={{ fontSize: 10 }} />
+                <Tooltip />
 
-              <Line
-                type="monotone"
-                dataKey="balance"
-                stroke="#6366F1"
-                strokeWidth={3}
-                dot={false}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+                <Line
+                  type="monotone"
+                  dataKey="balance"
+                  stroke="#6366F1"
+                  strokeWidth={2}
+                  dot={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         )}
       </div>
     </div>
