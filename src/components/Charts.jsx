@@ -49,7 +49,7 @@ const Charts = ({ data, dark }) => {
       {/* PIE CHART */}
       <div className={`${base} p-4 sm:p-5 rounded-2xl shadow`}>
         <h2 className="mb-3 font-semibold text-center text-sm sm:text-base">
-          💸 Expense Distribution
+         Expense Distribution
         </h2>
 
         {pieData.length === 0 ? (
