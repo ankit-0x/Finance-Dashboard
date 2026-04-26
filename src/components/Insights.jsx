@@ -35,22 +35,22 @@ const Insights = ({ data, dark }) => {
   const diff = latest - previous;
 
   const getMessage = () => {
-    if (diff > 0) return "Great! You are saving more money 👍";
-    if (diff < 0) return "You spent more than last month ⚠️";
-    return "Your spending is stable 🙂";
+    if (diff > 0) return "Great! You are saving more money ";
+    if (diff < 0) return "You spent more than last month ";
+    return "Your spending is stable ";
   };
 
   const base = dark ? "bg-gray-800 text-white" : "bg-white text-black";
 
   return (
     <div className={`${base} p-4 sm:p-5 rounded-2xl shadow-lg mt-6`}>
-      <h2 className="text-base sm:text-lg font-semibold mb-4">📊 Insights</h2>
+      <h2 className="text-base sm:text-lg font-semibold mb-4">Insights</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
         {/* Highest Spending */}
         <div className="p-3 sm:p-4 rounded-xl bg-red-50 text-red-700">
           <p className="font-medium text-sm sm:text-base">
-            💸 Highest Spending
+            Highest Spending
           </p>
           <p className="text-xs sm:text-sm mt-1">
             You spent the most on <b>{highestCategory || "N/A"}</b> (₹
@@ -61,33 +61,33 @@ const Insights = ({ data, dark }) => {
         {/* Monthly Summary */}
         <div className="p-3 sm:p-4 rounded-xl bg-blue-50 text-blue-700">
           <p className="font-medium mb-2 text-sm sm:text-base">
-            📅 Monthly Summary
+            Monthly Summary
           </p>
 
           <p className="text-sm sm:text-base">
             {latest >= 0 ? (
               <>
-                💰 You <b>saved ₹{Math.abs(latest).toLocaleString()}</b> this
+                You <b>saved ₹{Math.abs(latest).toLocaleString()}</b> this
                 month
               </>
             ) : (
               <>
-                ⚠️ You <b>spent ₹{Math.abs(latest).toLocaleString()}</b> more
+                You <b>spent ₹{Math.abs(latest).toLocaleString()}</b> more
                 than you earned
               </>
             )}
           </p>
 
           <p className="text-xs sm:text-sm mt-2">
-            ⬅️ Last month: ₹{previous.toLocaleString()}
+            Last month: ₹{previous.toLocaleString()}
           </p>
 
           <p className="mt-2 font-medium text-xs sm:text-sm">
             {diff > 0
-              ? `📈 You are doing better than last month by ₹${diff.toLocaleString()}`
+              ? `You are doing better than last month by ₹${diff.toLocaleString()}`
               : diff < 0
-                ? `📉 You are down by ₹${Math.abs(diff).toLocaleString()} compared to last month`
-                : "➖ No change from last month"}
+                ? `You are down by ₹${Math.abs(diff).toLocaleString()} compared to last month`
+                : "No change from last month"}
           </p>
         </div>
 
@@ -101,7 +101,7 @@ const Insights = ({ data, dark }) => {
                 : "bg-gray-100 text-gray-700"
           }`}
         >
-          <p className="font-medium text-sm sm:text-base">💡 Quick Insight</p>
+          <p className="font-medium text-sm sm:text-base">Quick Insight</p>
           <p className="text-xs sm:text-sm mt-1">{getMessage()}</p>
         </div>
       </div>

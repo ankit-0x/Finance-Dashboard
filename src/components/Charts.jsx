@@ -85,7 +85,7 @@ const Charts = ({ data, dark }) => {
       {/* LINE CHART */}
       <div className={`${base} p-4 sm:p-5 rounded-2xl shadow`}>
         <h2 className="mb-3 font-semibold text-center text-sm sm:text-base">
-          📈 Balance Over Time
+          Balance Over Time
         </h2>
 
         {trendData.length === 0 ? (
