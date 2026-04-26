@@ -81,7 +81,7 @@ function App() {
               onClick={exportData}
               className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-4 py-1.5 rounded-lg text-sm sm:text-base transition"
             >
-              ⬇️ Export
+            Export
             </button>
           </div>
         </div>
